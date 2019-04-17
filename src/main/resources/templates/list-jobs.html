@@ -11,7 +11,17 @@
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <!-- TODO #3 - Use the same list display from search.html -->
+    <h1 th:text="${jobs.size() + ' Result(s)'}"></h1>
 
+    <div> <!-- added class="job-listing" and implemented loop of searchResults-->
+    <!--swap searchResults for jobs bcz ListController uses jobs-->
+        <table class="job-listing" th:each="job : ${jobs}">
+            <tr th:each="jobData : ${job.entrySet()}"> <!-- use entrySet for jobData map-->
+                <th th:text="${jobData.getKey()}">Title</th>
+                <td th:text="${jobData.getValue()}">Value</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 </body>
